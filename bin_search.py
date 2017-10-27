@@ -11,33 +11,34 @@ Return the index of value, or -1 if the value
 doesn't exist in the list."""
 
 def binary_search(input_array, value):
-    """Your code goes here."""
-    """ Given input is already in sorted order
-    Here is how it should be done:
-    1. Find the middle element of the array from range (0...size)
-    2. Compare it with the given value
-        2.1 If value == mid-element
-                then return it and terminate the program
-        2.2 Else If value < mid-element
-                then  repeat step 1 with range (0...mid-element-index-1)
-        2.3 Else If value > mid-element
+
+    """ Algorithm: Here is how it could be done:
+    1. Get middle index of array with range (0...array-size)
+    2. Compare value of mid-element at that index with given value
+        2.1 If (value == mid-element)
+                then return the middle index [DONE]
+        2.2 Else If (value < mid-element)
+                then  repeat step 1 with range (0...mid-element-index)
+        2.3 Else If (value > mid-element)
                 then repeat step 2 with range (mid-element-index + 1, size)
-    3. If loop finishes normally then return -1"""
+    3. Since iteration completed without finding the elements, return -1"""
 
     """ Step 1"""
-    size = len(input_array)
     start = 0
-    end = size
+    end = len(input_array)
 
+    """ Step 2"""
     while end > start:
-        mid = (start + end) / 2
-        mid_value = input_array[mid]
+        mid_index = (start + end) / 2
+        mid_value = input_array[mid_index]
+
         if value == mid_value:
-            return mid
+            return mid_index
         elif value < mid_value:
-            end = mid
+            end = mid_index
         else:
-            start = mid + 1
+            start = mid_index + 1
+
     """ Step 3"""
     return -1
 
